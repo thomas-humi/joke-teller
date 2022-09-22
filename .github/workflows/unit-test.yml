@@ -3,7 +3,8 @@ name: Unit Test
 on: [push]
 
 jobs:
-  build:
+  run-tests:
+    name: 🧪 Run Unit Tests
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -17,3 +18,14 @@ jobs:
       - name: Run tests
         run: |
           python test*.py
+  celebrate-tests:
+    name: Celebrate the success of our unit tests
+    runs-on: ubuntu-latest
+    needs: [run-tests]
+    steps:
+      - name: Install figlet
+        run: |
+          sudo apt-get -y install figlet
+          which figlet
+      - name: Show celebration text
+        run: figlet 'Oh wow! You did it!!! The unit tests passed!'
