@@ -2,6 +2,10 @@ name: Unit Test
 
 on: [pushed]
 
+concurrency:
+  group: ${{ github.refs }}
+  cancel-in-progress: true
+
 jobs:
   run-tests:
     name: 🧪 Run Unit Tests
