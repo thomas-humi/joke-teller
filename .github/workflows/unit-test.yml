@@ -1,6 +1,6 @@
 name: Unit Test
 
-on: [push]
+on: [pushed]
 
 jobs:
   run-tests:
@@ -18,10 +18,11 @@ jobs:
       - name: Run tests
         run: |
           python test*.py
+
   celebrate-tests:
     name: Celebrate the success of our unit tests
-    runs-on: ubuntu-latest
-    needs: [run-tests]
+    runs-on: ubuntu-lastest
+    needs: [tests]
     steps:
       - name: Install figlet
         run: |
